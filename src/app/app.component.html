@@ -1,0 +1,27 @@
+
+<body>
+<select [(ngModel)]="pessoa.categoria">
+  <option value="to-do">To-do</option>
+  <option value="doing">Doing</option>
+  <option value="done">Done</option>
+</select>
+<input  placeholder="nome" [(ngModel)]=pessoa.nome/>
+<button (click)="cadastrarUsuario()">Cadastrar</button>
+
+<div *ngFor="let usuario of usuarios; index as indice;">
+  <h4>
+        {{indice}}-
+        Tarefa:{{usuario.nome}} 
+        <select [(ngModel)]="usuario.categoria" (change)="alterarCategoria(usuario, $event.target.value)">
+          <option value="to-do">To-do</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option>
+        </select>
+        
+        <button (click)="remover(indice)"> remover</button>
+        
+    </h4>
+</div>
+</body>
+
+
