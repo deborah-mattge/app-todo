@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-interface Pessoa{
+interface Tarefa{
   nome:string
   categoria: string
 }
@@ -13,8 +13,8 @@ export class AppComponent {
   ngOnInit() {
     const tarefas = localStorage.getItem('tarefa');
     if (tarefas) {
-      this.usuarios = JSON.parse(tarefas);
-      this.usuarios.forEach(usuario => {
+      this.listas = JSON.parse(tarefas);
+      this.listas.forEach(usuario => {
         usuario.categoria = usuario.categoria || 'to-do'; 
         this.salvar()
       });
@@ -23,37 +23,50 @@ export class AppComponent {
 
   title = 'todo-app';
   mostraInput: boolean=true;
-  usuarios: Pessoa[]=[];
-    pessoa: Pessoa ={
+  listas: Tarefa[]=[];
+    tarefa: Tarefa ={
       nome: '',
       categoria: ''
     }
-    cadastrarUsuario():void{
+    categorias: string[] = [];
+    
+    cadastrarTarefa():void{
       
       
 
-      const usuario: Pessoa={
-        nome:this.pessoa.nome,
-        categoria:this.pessoa.categoria
+      const usuario: Tarefa={
+        nome:this.tarefa.nome,
+        categoria:this.tarefa.categoria
       }
 
       
-      this.usuarios.push(usuario);
+      this.listas.push(usuario);
       this.salvar();
-      this.pessoa.nome=''
-      console.log(this.usuarios);
+      this.tarefa.nome=''
+      console.log(this.listas);
     }
     remover(indice:number){
-      this.usuarios.splice(indice,1);
+      console.log(indice)
+      this.listas.splice(indice,1);
       this.salvar()
     }
     salvar(){
-      localStorage.setItem('tarefa',JSON.stringify(this.usuarios));
+      localStorage.setItem('tarefa',JSON.stringify(this.listas));
+      localStorage.setItem('categoria',JSON.stringify(this.categorias));
+
 
     }
-    alterarCategoria(usario: Pessoa){
+    cadastrarCategoria(){
+      console.log(this.tarefa.categoria)
+      this.categorias.push(this.tarefa.categoria);
+      console.log(this.categorias)  
+      this.tarefa.categoria='';
       this.salvar()
+      
 
+    }
+    alterarCategoria(usario: Tarefa){
+      this.salvar()
 
     }
     
