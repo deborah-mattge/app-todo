@@ -1,34 +1,57 @@
-<body>
+<h1>Todo App</h1>
+
+<nav>
+  <a routerLink="/tarefas" routerLinkActive="active">Tarefas</a>
+
+</nav>
+
+<router-outlet></router-outlet>
+
+
+
+
+<!-- <body>
   <h1> TASKLIST </h1>
   <select>
     <option *ngFor="let categoria of categorias " [value]="categoria">{{categoria}}</option>
-              
+
   </select>
-  <input [(ngModel)]="tarefa.categoria"/>
+  <input [(ngModel)]="tarefa.categoria" />
   <button (click)="cadastrarCategoria()">cadastrar categoria</button>
   <input placeholder="nome" [(ngModel)]=tarefa.nome />
   <button (click)="cadastrarTarefa()">Cadastrar</button>
+  <div class="tudo">
+    <div *ngFor="let categoria of categorias">
+      <div class="coluna">
+      <h2>{{ categoria }}</h2>
+      <div *ngFor="let tarefa of listas">
+        <div *ngIf="tarefa.categoria === categoria">
+          <p>Tarefa: {{ tarefa.nome }}</p>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </div> -->
 
 
-  <div *ngFor="let categoria1 of categorias">
+  <!-- <div *ngFor="let categoria1 of categorias">
   <div class="tudo">
     <div class="coluna">
       <h3>{{categoria1}}</h3>
       <div *ngFor="let usuario of listas; index as indice ">
-        <div >
+        <div *ngIf="usario.categoria==categoria1">
           <h4>
-           Tarefa:{{usuario.nome}}
-           <select [(ngModel)]="usuario.categoria" (change)="alterarCategoria(usuario, $event.target.value)">
-          <option *ngFor="let categoria of categorias " [value]="categoria" ></option>           
-          </select>
-           <button (click)="remover(indice)"> remover</button>
+            Tarefa:{{usuario.nome}}
+            <button (click)="remover(indice)"> remover</button>
           </h4>
+        <div >
         </div>
       </div>
-    </div>
+    </div> -->
 
-    </div>
-            <!-- <select [(ngModel)]="usuario.categoria" (change)="alterarCategoria(usuario, $event.target.value)">
+
+  <!-- <select [(ngModel)]="usuario.categoria" (change)="alterarCategoria(usuario, $event.target.value)">
               <option value="to-do">To-do</option>
               <option value="doing">Doing</option>
               <option value="done">Done</option>
@@ -36,8 +59,8 @@
             </select>
 
             <button (click)="remover(indice)"> remover</button> -->
-          
-    <!-- <div class="coluna">
+
+  <!-- <div class="coluna">
       <h3>DOING</h3>
       <div *ngFor="let usuario of listas; index as indice">
         <div *ngIf="usuario.categoria=='doing'">
@@ -75,5 +98,5 @@
         </div>
       </div>
     </div> -->
-  </div>
+
 </body>

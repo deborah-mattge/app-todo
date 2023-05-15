@@ -3,15 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { TarefaComponent } from 'src/app/tarefa/tarefa.component';
+import { CategoriaComponent } from 'src/app/categoria/categoria.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TarefaComponent,
+    CategoriaComponent
   ],
   imports: [
     BrowserModule, 
-    FormsModule
-
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
