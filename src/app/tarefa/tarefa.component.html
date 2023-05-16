@@ -1,3 +1,13 @@
-<p>
-  tarefa works!
-</p>
+<select>
+  <option *ngFor="let categoria of categorias " [value]="categoria">{{categoria}}</option>
+</select>
+<input placeholder="nome" [(ngModel)]=tarefa.nome />
+<button (click)="cadastrarTarefa()">Cadastrar</button>
+<div class="tudo">
+  <div *ngFor="let categoria of categorias">
+    <div class="coluna">
+      <h2>{{ categoria }}</h2>
+      <div *ngFor="let tarefa of listas">
+        <div *ngIf="tarefa.categoria === categoria">
+          <p>Tarefa: {{ tarefa.nome }}</p>
+        </div>

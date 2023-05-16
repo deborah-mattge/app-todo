@@ -7,6 +7,8 @@ import { TarefaComponent } from 'src/app/tarefa/tarefa.component';
 import { CategoriaComponent } from 'src/app/categoria/categoria.component';
 import { AppRoutingModule } from './app-routing.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

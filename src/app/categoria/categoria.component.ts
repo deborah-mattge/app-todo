@@ -11,5 +11,19 @@ export class CategoriaComponent implements OnInit {
 
   ngOnInit() {
   }
+  novaCategoria: string;
+  categorias: string[] = [];
+    
+    
+  cadastrarCategoria(){
+    console.log(this.novaCategoria)
+    this.categorias.push(this.novaCategoria);
+    console.log(this.categorias)  
+   this.novaCategoria='';
+  
+    
+
+  }
+  
 
 }
