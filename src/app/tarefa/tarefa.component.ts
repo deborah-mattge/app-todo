@@ -17,14 +17,24 @@ export class TarefaComponent implements OnInit {
     const tarefas = localStorage.getItem('tarefa');
     if (tarefas) {
       this.listas = JSON.parse(tarefas);
-      this.listas.forEach(usuario => {
-        usuario.categoria = usuario.categoria || 'to-do'; 
-        this.salvar()
-      });
+    }
+
+    const categoriasSalvas = localStorage.getItem('categoria');
+    if (categoriasSalvas) {
+      const tarefas = localStorage.getItem('tarefa');
+    if (tarefas) {
+      this.listas = JSON.parse(tarefas);
+    }
+
+    const categoriasSalvas = localStorage.getItem('categoria');
+    if (categoriasSalvas) {
+      this.categorias = JSON.parse(categoriasSalvas);
+    }
     }
   }
   title = 'todo-app';
   mostraInput: boolean=true;
+  categorias: any []=[];
   listas: Tarefa[]=[];
     tarefa: Tarefa ={
       nome: '',
@@ -40,7 +50,6 @@ export class TarefaComponent implements OnInit {
       this.listas.push(usuario);
       this.salvar();
       this.tarefa.nome=''
-      console.log(this.listas);
     }
     remover(indice:number){
       console.log(indice)
@@ -50,6 +59,15 @@ export class TarefaComponent implements OnInit {
     salvar(){
       localStorage.setItem('tarefa',JSON.stringify(this.listas));
     }
+
+    atualizarCategoriaTarefa(tarefa: Tarefa, novaCategoria: string){
+      tarefa.categoria= novaCategoria;
+      this.salvar();
+
+
+    }
+
+
   
 
 }
