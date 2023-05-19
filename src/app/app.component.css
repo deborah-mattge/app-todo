@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau:wght@900&display=swap');
+header{
+    background-color: rgb(194, 226, 255);
+    display: flex;
+    padding: 2%;
+   
+}
+button{
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  border-color: aliceblue;
+  background-color: rgb(194, 194, 250);
+  color: white;
+  cursor: pointer;
+  font-family:Andale Mono, monospace;
+  
+}
+.titulo{
+    padding: 0px;
+    margin: 0px 90px;
+    justify-self: center;
+    color:  rgb(238, 143, 230); 
+    font-family: 'Ysabeau', sans-serif;
+    font-size: 50px;
+    text-shadow: 
+             -2px -2px 0px #FFF, 
+             -1px 1px 0px #FFF,                    
+              1px -1px 0px #FFF,                  
+              1px 0px 0px #FFF;
+    
+   
+    
+ 
+   
+}

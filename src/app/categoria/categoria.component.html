@@ -1,9 +1,17 @@
-
-  <input [(ngModel)]="novaCategoria" />
-  <button (click)="cadastrarCategoria()">cadastrar categoria</button>
-  <h2>categorias cadastradas</h2>
-  <div *ngFor="let categoria of categorias">
-    {{categoria}} 
-    <button (click)="remover()">remover categoria</button>
+<body>
+  <div class="topo">
+    <input [(ngModel)]="novaCategoria" />
+    <button (click)="cadastrarCategoria()" class="botaoCadastrar">cadastrar categoria</button>
   </div>
- 
+  <div class="tudo">
+    <div class="escopo">
+      <h2>categorias cadastradas</h2>
+
+      <div *ngFor="let categoria of categorias index as indice" class="categorias">
+        <div class="categoria">{{categoria}}</div>
+        <button (click)="remover(indice)" class="botaoRemover">remover categoria</button>
+      </div>
+    </div>
+  </div>
+
+</body>
