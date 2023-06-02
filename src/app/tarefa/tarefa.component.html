@@ -8,10 +8,10 @@
   </div>
   <div class="tudo">
     <div *ngFor="let categoria of categorias">
-      <div class="coluna">
+      <div class="coluna" (dragover)="salvarCat(categoria)">
         <h2>{{ categoria }}</h2>
         <div *ngFor="let tarefa of listas; index as indice">
-          <div *ngIf="tarefa.categoria === categoria">
+          <div *ngIf="tarefa.categoria === categoria" class="item" draggable="true" (dragend)="atualizarDrop(tarefa)" >
             <p>Tarefa: {{ tarefa.nome }}</p>
            
             <select [(ngModel)]="tarefa.categoria" (change)="atualizarCategoriaTarefa(tarefa, $event.target.value)" class="dentro" >

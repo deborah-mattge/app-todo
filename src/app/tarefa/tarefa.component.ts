@@ -66,7 +66,15 @@ export class TarefaComponent implements OnInit {
 
 
     }
+    salvarCat(categoria: String){
+      localStorage.setItem("dropC",JSON.stringify(categoria))
+    }
+    atualizarDrop(tarefa:Tarefa){
+      tarefa.categoria=JSON.parse(localStorage.getItem('dropC'));
+      this.salvar();
 
+    }
+  
 
   
 
