@@ -36,6 +36,7 @@ export class TarefaComponent implements OnInit {
   mostraInput: boolean=true;
   categorias: any []=[];
   listas: Tarefa[]=[];
+  posicaoTroca: number;
     tarefa: Tarefa ={
       nome: '',
       categoria: ''
@@ -70,12 +71,20 @@ export class TarefaComponent implements OnInit {
       localStorage.setItem("dropC",JSON.stringify(categoria))
     }
     atualizarDrop(tarefa:Tarefa){
-      tarefa.categoria=JSON.parse(localStorage.getItem('dropC'));
-      this.salvar();
+      const categoriaDestino = JSON.parse(localStorage.getItem('dropC'));
+      const targetIndex = this.listas.findIndex(item => item === tarefa);
+      console.log(targetIndex);
+    
+      if (targetIndex !== -1) {
+        tarefa.categoria = categoriaDestino; 
+        this.listas.splice(targetIndex, 1); 
+        this.listas.splice(this.posicaoTroca,0,tarefa); 
+        this.salvar(); 
+    }
+    }
+    pegarPosicao(tarefa:Tarefa){
+      this.posicaoTroca=this.listas.indexOf(tarefa);
+
 
     }
-  
-
-  
-
 }
