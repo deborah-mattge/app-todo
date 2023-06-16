@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TarefaComponent } from 'src/app/tarefa/tarefa.component';
 import { CategoriaComponent } from 'src/app/categoria/categoria.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PropriedadeComponent } from './propriedade/propriedade.component';
 
 
 
@@ -13,7 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [
     AppComponent,
     TarefaComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    PropriedadeComponent
   ],
   imports: [
     BrowserModule, 

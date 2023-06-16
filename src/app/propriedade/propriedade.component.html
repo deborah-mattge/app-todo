@@ -1,0 +1,11 @@
+<h3 >nome da propriedade: </h3>
+<input placeholder="nome" [(ngModel)]="propriedade.nome">
+<h3>
+  tipo de dados:  
+  <select placeholder="tipo" [(ngModel)]="propriedade.tipo">
+  <option>texto</option>
+  <option>numero</option>
+  <option>seleção</option>
+</select> </h3>
+<div *ngFor="let propriedade of propriedades"></div>
+<button (click)="cadastrarPropriedade()"></button>
