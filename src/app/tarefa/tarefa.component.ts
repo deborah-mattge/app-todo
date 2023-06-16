@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 interface Tarefa{
   nome:string
   categoria: string
@@ -11,7 +13,7 @@ interface Tarefa{
 })
 export class TarefaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     const tarefas = localStorage.getItem('tarefa');
@@ -31,6 +33,11 @@ export class TarefaComponent implements OnInit {
       this.categorias = JSON.parse(categoriasSalvas);
     }
     }
+    this.route.paramMap.subscribe(params => {
+      const propriedadesParam = params.get('propriedades');
+      this.propriedades = JSON.parse(propriedadesParam);
+    });
+    
   }
   title = 'todo-app';
   mostraInput: boolean=true;
@@ -41,6 +48,9 @@ export class TarefaComponent implements OnInit {
       nome: '',
       categoria: ''
     }
+    propriedades:any[]=[];
+
+
     cadastrarTarefa():void{
       const usuario: Tarefa={
         nome:this.tarefa.nome,

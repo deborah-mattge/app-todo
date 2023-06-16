@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 interface Propriedade{
   nome:string
   tipo: string
@@ -12,9 +14,18 @@ interface Propriedade{
 })
 export class PropriedadeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {}
+
+  navigateToTarefa(propriedades: string[]) {
+    this.router.navigate(['/tarefa', propriedades]);
+  }
 
   ngOnInit() {
+    const propriedades = localStorage.getItem('propriedade');
+    if (this.propriedade) {
+      this.propriedades = JSON.parse(propriedades);
+    }
+
   }
 
   propriedades: Propriedade[]=[];
@@ -36,5 +47,10 @@ export class PropriedadeComponent implements OnInit {
 }
 salvar(){
   localStorage.setItem('propriedade',JSON.stringify(this.propriedades));
+}
+remover(indice:number){
+  console.log(indice)
+  this.propriedades.splice(indice,1);
+  this.salvar()
 }
 }

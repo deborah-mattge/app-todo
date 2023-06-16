@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'tarefas', component: TarefaComponent },
   { path: 'categorias', component: CategoriaComponent },
   { path: '', redirectTo: 'tarefas', pathMatch: 'full' },
-  {path: 'propriedades', component: PropriedadeComponent}
+  {path: 'propriedades', component: PropriedadeComponent},
+  { path: 'tarefa/:propriedades', component: TarefaComponent },
 ];
 
 @NgModule({

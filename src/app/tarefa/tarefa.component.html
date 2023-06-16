@@ -3,7 +3,7 @@
     <select [(ngModel)]="tarefa.categoria">
       <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
     </select>
-    <input placeholder="nome" [(ngModel)]=tarefa.nome />
+    <input placeholder="nome" [(ngModel)]=tarefa.nome  />
     <button (click)="cadastrarTarefa()" class="botaoCadastrar">Cadastrar</button>
   </div>
   <div class="tudo">
@@ -23,5 +23,10 @@
       </div>
     </div>
   </div>
-  <button> propriedades</button>
+  <h1>Lista de Propriedades</h1>
+<ul>
+  <li *ngFor="let propriedade of propriedades">
+    {{ propriedade }}
+  </li>
+</ul>
 </body>
