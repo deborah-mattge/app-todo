@@ -3,7 +3,10 @@
     <select [(ngModel)]="tarefa.categoria">
       <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
     </select>
-    <input placeholder="nome" [(ngModel)]=tarefa.nome  />
+    <input placeholder="nome" [(ngModel)]=tarefa.nome />  
+    <div *ngFor="let propriedade of propriedades">
+      <input placeholder="{{ propriedade.nome }}" [(ngModel)]="propriedade.valor" />
+    </div>
     <button (click)="cadastrarTarefa()" class="botaoCadastrar">Cadastrar</button>
   </div>
   <div class="tudo">
@@ -13,7 +16,11 @@
         <div *ngFor="let tarefa of listas; index as indice">
           <div *ngIf="tarefa.categoria === categoria" class="item" draggable="true" (dragend)="atualizarDrop(tarefa)" (dragover)="pegarPosicao(tarefa)" >
             <p>Tarefa: {{ tarefa.nome }}</p>
-           
+            <div *ngFor="let propriedade of tarefa.propriedades">
+              <div *ngIf="propriedade.valor !== null">
+                {{ propriedade.nome }}: {{ propriedade.valor }}
+              </div>
+            </div>
             <select [(ngModel)]="tarefa.categoria" (change)="atualizarCategoriaTarefa(tarefa, $event.target.value)" class="dentro" >
               <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
             </select>
@@ -26,7 +33,7 @@
   <h1>Lista de Propriedades</h1>
 <ul>
   <li *ngFor="let propriedade of propriedades">
-    {{ propriedade }}
+    {{ propriedade.nome }} {{ propriedade.tipo }}
   </li>
 </ul>
 </body>

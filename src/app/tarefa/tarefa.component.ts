@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
 interface Tarefa{
   nome:string
   categoria: string
+  propriedades?: any;
+
 }
 
 @Component({
@@ -13,7 +13,7 @@ interface Tarefa{
 })
 export class TarefaComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
     const tarefas = localStorage.getItem('tarefa');
@@ -32,13 +32,17 @@ export class TarefaComponent implements OnInit {
     if (categoriasSalvas) {
       this.categorias = JSON.parse(categoriasSalvas);
     }
+    const propriedadesSalvas = localStorage.getItem('propriedade');
+
+    console.log(propriedadesSalvas)
+    if (propriedadesSalvas) {
+      this.propriedades = JSON.parse(propriedadesSalvas);
     }
-    this.route.paramMap.subscribe(params => {
-      const propriedadesParam = params.get('propriedades');
-      this.propriedades = JSON.parse(propriedadesParam);
-    });
-    
+
+    }
+    console.log(this.propriedades)
   }
+  propriedades: any []=[]
   title = 'todo-app';
   mostraInput: boolean=true;
   categorias: any []=[];
@@ -47,20 +51,28 @@ export class TarefaComponent implements OnInit {
     tarefa: Tarefa ={
       nome: '',
       categoria: ''
+      
     }
-    propriedades:any[]=[];
-
-
     cadastrarTarefa():void{
+      const propriedadesCopiadas = this.propriedades.map(propriedade => ({ ...propriedade, valor: propriedade.valor }));
       const usuario: Tarefa={
         nome:this.tarefa.nome,
-        categoria:this.tarefa.categoria
+        categoria:this.tarefa.categoria,  
+        propriedades: propriedadesCopiadas
       }
 
-      
       this.listas.push(usuario);
+      console.log(usuario);
       this.salvar();
-      this.tarefa.nome=''
+      for (let propriedade of usuario.propriedades) {
+        console.log(propriedade.valor);
+      }
+      
+      this.tarefa.nome='';
+      for (let propriedade of this.propriedades) {
+        propriedade.valor = ''; 
+      }
+    
     }
     remover(indice:number){
       console.log(indice)

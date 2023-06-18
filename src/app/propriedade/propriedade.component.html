@@ -7,10 +7,9 @@
   <option>numero</option>
   <option>seleção</option>
 </select> </h3>
-<button (click)="cadastrarPropriedade()" class="botaoCadastrar">Cadastrar</button>
+<div *ngFor="let propriedade of propriedades"></div>
+<button (click)="cadastrarPropriedade()">Cadastrar</button>
 <div *ngFor="let propriedade of propriedades; index as indice">{{propriedade.nome}} {{propriedade.tipo}}
   <button (click)="remover(indice)" class="botaoRemover">remover tarefa</button>
 
 </div>
-
-
