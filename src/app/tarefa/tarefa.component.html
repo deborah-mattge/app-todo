@@ -17,8 +17,9 @@
           <div *ngIf="tarefa.categoria === categoria" class="item" draggable="true" (dragend)="atualizarDrop(tarefa)" (dragover)="pegarPosicao(tarefa)" >
             <p>Tarefa: {{ tarefa.nome }}</p>
             <div *ngFor="let propriedade of tarefa.propriedades">
-              <div *ngIf="propriedade.valor !== null">
-                {{ propriedade.nome }}: {{ propriedade.valor }}
+              <div *ngIf="propriedade.valor != null">
+                <div *ngIf="propriedade.valor != ''">{{ propriedade.nome }}: {{ propriedade.valor }}</div>
+                
               </div>
             </div>
             <select [(ngModel)]="tarefa.categoria" (change)="atualizarCategoriaTarefa(tarefa, $event.target.value)" class="dentro" >
