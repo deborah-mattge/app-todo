@@ -5,7 +5,9 @@
     </select>
     <input placeholder="nome" [(ngModel)]=tarefa.nome />  
     <div *ngFor="let propriedade of propriedades">
-      <input placeholder="{{ propriedade.nome }}" [(ngModel)]="propriedade.valor" />
+      <div *ngIf="propriedade.tipo=='texto'"><input placeholder="{{ propriedade.nome }}" type="text" [(ngModel)]="propriedade.valor" /></div>
+      <div *ngIf="propriedade.tipo=='numero'"><input placeholder="{{ propriedade.nome }}" type="number" [(ngModel)]="propriedade.valor" /></div>
+      
     </div>
     <button (click)="cadastrarTarefa()" class="botaoCadastrar">Cadastrar</button>
   </div>
