@@ -9,7 +9,8 @@
       <div *ngIf="propriedade.tipo=='numero'"><input placeholder="{{ propriedade.nome }}" type="number" [(ngModel)]="propriedade.valor" /></div>
       
     </div>
-    <button (click)="cadastrarTarefa()" class="botaoCadastrar">Cadastrar</button>
+    
+    <button (click)="adicionarTarefa()"[disabled]="!hasPermission('Add')"(click)="cadastrarTarefa()" class="botaoCadastrar">Adicionar tarefa</button>
   </div>
   <div class="tudo">
     <div *ngFor="let categoria of categorias">
@@ -27,7 +28,8 @@
             <select [(ngModel)]="tarefa.categoria" (change)="atualizarCategoriaTarefa(tarefa, $event.target.value)" class="dentro" >
               <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
             </select>
-            <button (click)="remover(indice)" class="botaoRemover">remover tarefa</button>
+            
+            <button (click)="removerTarefa()"[disabled]="!hasPermission('Remove')"(click)="remover()" class="botaoRemover">Remover tarefa</button>
           </div>
         </div>
       </div>

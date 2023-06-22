@@ -7,7 +7,7 @@ import { TarefaComponent } from 'src/app/tarefa/tarefa.component';
 import { CategoriaComponent } from 'src/app/categoria/categoria.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PropriedadeComponent } from './propriedade/propriedade.component';
-import { userRepository } from 'src/repositories/user.repository';
+import { UserRepository } from 'src/repositories/user.repository';
 
 
 
@@ -24,7 +24,7 @@ import { userRepository } from 'src/repositories/user.repository';
     AppRoutingModule
   ],
   providers: [
-    userRepository
+    UserRepository
   ],
   bootstrap: [AppComponent]
 })

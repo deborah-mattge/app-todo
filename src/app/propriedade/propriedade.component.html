@@ -8,8 +8,8 @@
   <option>seleção</option>
 </select> </h3>
 <div *ngFor="let propriedade of propriedades"></div>
-<button (click)="cadastrarPropriedade()">Cadastrar</button>
+<button (click)="adicionarPropriedade()"[disabled]="!hasPermission('Add')"(click)="cadastrarPropriedade()" class="botaoCadastrar">Adicionar propriedade</button>
 <div *ngFor="let propriedade of propriedades; index as indice">{{propriedade.nome}} {{propriedade.tipo}}
-  <button (click)="remover(indice)" class="botaoRemover">remover tarefa</button>
+  <button (click)="removerPropriedade()"[disabled]="!hasPermission('Remove')"(click)="remover(indice)" class="botaoRemover">Remover propriedade</button>
 
 </div>

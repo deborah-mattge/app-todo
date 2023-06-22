@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
-import { users } from "src/data/users";
+import { users } from '../data/users';
+import { User } from "src/models/users/user";
 
 @Injectable()
-export class userRepository{
-    constructor(){
+export class UserRepository {
 
-    }
-    getUsers(){
+    getUsers(): User[] {
         return users;
     }
 

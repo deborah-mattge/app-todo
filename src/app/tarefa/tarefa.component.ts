@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/models/users/user';
+import { UserRepository } from 'src/repositories/user.repository';
 interface Tarefa{
   nome:string
   categoria: string
@@ -11,9 +13,19 @@ interface Tarefa{
   templateUrl: './tarefa.component.html',
   styleUrls: ['./tarefa.component.css']
 })
-export class TarefaComponent implements OnInit {
 
-  constructor() { }
+export class TarefaComponent implements OnInit {
+  private userId: string = 'diogo.defante';
+  private users: User[] = [];
+  user!: User;
+
+
+  constructor( private userRepository: UserRepository) {
+    this.users = this.userRepository.getUsers();
+    this.user = this.getUsuarioLogado();
+    console.log(this.user);
+  
+   }
 
   ngOnInit() {
     const tarefas = localStorage.getItem('tarefa');
@@ -93,6 +105,11 @@ export class TarefaComponent implements OnInit {
       localStorage.setItem("dropC",JSON.stringify(categoria))
     }
     atualizarDrop(tarefa:Tarefa){
+      if (!this.hasPermission('MoveCard')) {
+        alert('Não pode mover'); 
+        return;
+      }
+      alert('Pode mover');
       const categoriaDestino = JSON.parse(localStorage.getItem('dropC'));
       const targetIndex = this.listas.findIndex(item => item === tarefa);
       console.log(targetIndex);
@@ -109,4 +126,46 @@ export class TarefaComponent implements OnInit {
 
 
     }
+    
+ 
+ 
+   
+  
+    
+
+  adicionarTarefa(): void {
+    if (!this.hasPermission('Add')) {
+      alert('Não pode cadastrar');
+      return;
+    }
+    alert('Pode cadastrar');
+  }
+
+  editarTarefa(): void {
+    if (!this.hasPermission('Edit')) {
+      alert('Não pode editar');
+      return;
+    }
+    alert('Pode editar');
+  }
+
+  removerTarefa(): void {
+    if (!this.hasPermission('Remove')) {
+      alert('Não pode remover');
+      return;
+    }
+    alert('Pode remover');
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.user.cardPermissions.some((cardPermission) => {
+      return cardPermission === permission;
+    });
+  }
+
+  private getUsuarioLogado(): User {
+    return this.users.find((user) => {
+      return user.id === this.userId
+    }) as User;
+  }
 }

@@ -1,67 +1,64 @@
-import { User } from "src/models/users/user"
-export const users: User[]=[
-    
-
+import { User } from "src/models/users/user";
+export const users: User[] = [
 	{
-		"id":"joao.silva",
-		"name":"João da Silva ",
-		"groups":[],
-		"cardPermissions":[
+		"id": "joao.silva",
+		"name": "João da Silva",
+		"groups": [],
+		"cardPermissions": [
 			"Add"
 		],
-		"propertiesPermission":[
-		"Add"
+		"propertiesPermissions": [
+			"Add"
 		]
 	},
 	{
-		"id":"henrique.silva",
-		"name":"Henrique da Silva ",
-		"groups":[],
-		"cardPermissions":[
+		"id": "henrique.santos",
+		"name": "Henrique Santos",
+		"groups": [],
+		"cardPermissions": [
 			"Edit"
 		],
-		"propertiesPermission":[
-		"Edit"
+		"propertiesPermissions": [
+			"Edit"
 		]
 	},
 	{
-		"id":"higor.oliveira",
-		"name":"Higor Oliveira ",
-		"groups":[],
-		"cardPermissions":[
+		"id": "igor.oliveira",
+		"name": "Igor Oliveira",
+		"groups": [],
+		"cardPermissions": [
 			"Remove"
 		],
-		"propertiesPermission":[
-		"Remove"
+		"propertiesPermissions": [
+			"Remove"
 		]
 	},
 	{
-		"id":"higor2.guimaraes",
-		"name":"Higor Guimaraes ",
-		"groups":[],
-		"cardPermissions":[
-			"MoverCard"
-
+		"id": "igor.guimaraes",
+		"name": "Igor Guimaraes",
+		"groups": [],
+		"cardPermissions": [
+			"MoveCard"
 		],
-		"propertiesPermission":[
-		"Add",
-		"Edit"
+		"propertiesPermissions": [
+			"Add",
+			"Edit"
 		]
 	},
 	{
-		"id":"diogo.defante",
-		"name":"Diogo Defante ",
-		"groups":[],
-		"cardPermissions":[
-			"MoverCard"
-
+		"id": "diogo.defante",
+		"name": "Diogo Defante",
+		"groups": [],
+		"cardPermissions": [
+			"Add",
+			"Edit",
+			"Remove",
+			"MoveCard"
 		],
-		"propertiesPermission":[
-		"Add",
-		"Edit",
-		"Remove"
+		"propertiesPermissions": [
+			"Add",
+			"Edit",
+			"Remove"
 		]
 	}
-
 ]
-	

@@ -1,8 +1,8 @@
-export class User{
-    id: string='';
-	name: string='';
-	groups:string[]=[];
-	cardPermissions: string[]=[];
-	propertiesPermission: string[]=[];
 
+export class User {
+    id: string = '';
+	name: string = '';
+	groups: string[] = [];
+	cardPermissions: string[] = [];
+	propertiesPermissions: string[] = [];
 }
