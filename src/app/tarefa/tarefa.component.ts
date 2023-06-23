@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/users/user';
 import { UserRepository } from 'src/repositories/user.repository';
+
+
+
 interface Tarefa{
   nome:string
   categoria: string
@@ -21,9 +24,15 @@ export class TarefaComponent implements OnInit {
 
 
   constructor( private userRepository: UserRepository) {
-    this.users = this.userRepository.getUsers();
-    this.user = this.getUsuarioLogado();
-    console.log(this.user);
+    userRepository.getUsers().subscribe({
+      next:(value)=>{
+        this.users=value;
+        console.log(value);
+        this.getUsuarioLogado()
+        
+      }
+
+    })
   
    }
 
@@ -162,7 +171,7 @@ export class TarefaComponent implements OnInit {
       return cardPermission === permission;
     });
   }
-
+ 
   private getUsuarioLogado(): User {
     return this.users.find((user) => {
       return user.id === this.userId

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/users/user';
 import { UserRepository } from 'src/repositories/user.repository';
+
+
 interface Propriedade{
   nome:string
   tipo: string
@@ -20,10 +22,13 @@ export class PropriedadeComponent implements OnInit {
 
 
   constructor( private userRepository: UserRepository) {
-    this.users = this.userRepository.getUsers();
-    this.user = this.getUsuarioLogado();
-    console.log(this.user);
-  
+    userRepository.getUsers().subscribe({
+      next:(value)=>{
+        console.log(value);
+      }
+
+    })
+
    }
 
   ngOnInit() {
