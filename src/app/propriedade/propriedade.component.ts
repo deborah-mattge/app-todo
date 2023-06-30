@@ -67,41 +67,39 @@ remover(indice:number){
   this.propriedades.splice(indice,1);
   this.salvar()
 }
-adicionarPropriedade(): void {
-  if (!this.hasPermission('Add')) {
-    alert('Não pode cadastrar');
-    return;
-  }
-  alert('Pode cadastrar');
+ adicionarPropriedade(): void {
+   if (!this.hasPermission('Add')) {
+     alert('Não pode cadastrar');
+     return;
+   }
+   alert('Pode cadastrar');
+ }
+
+ editarPropriedade(): void {
+   if (!this.hasPermission('Edit')) {
+     alert('Não pode editar');
+     return;
+   }
+   alert('Pode editar');
+ }
+
+ removerPropriedade(): void {
+   if (!this.hasPermission('Remove')) {
+     alert('Não pode remover');
+     return;
+   }
+   alert('Pode remover');
+ }
+
+ hasPermission(permission: string): boolean {
+  return this.user.propertiesPermissions === permission;
 }
 
-editarPropriedade(): void {
-  if (!this.hasPermission('Edit')) {
-    alert('Não pode editar');
-    return;
-  }
-  alert('Pode editar');
-}
-
-removerPropriedade(): void {
-  if (!this.hasPermission('Remove')) {
-    alert('Não pode remover');
-    return;
-  }
-  alert('Pode remover');
-}
-
-hasPermission(permission: string): boolean {
-  return this.user.propertiesPermissions.some((propertiesPermissions) => {
-    return propertiesPermissions === permission;
-  });
-}
-
-private getUsuarioLogado(): User {
-  return this.users.find((user) => {
-    return user.id === this.userId
-  }) as User;
-}
+ private getUsuarioLogado(): User {
+   return this.users.find((user) => {
+     return user.id === this.userId
+   }) as User;
+ }
 }
 
 

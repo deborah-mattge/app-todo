@@ -4,6 +4,7 @@ import { TarefaComponent } from './tarefa/tarefa.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { PropriedadeComponent } from './propriedade/propriedade.component';
 import { AuthGuardService } from 'src/services/auth-guard.service';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 const routes: Routes = [
   { path: 'tarefas', component: TarefaComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'tarefas', pathMatch: 'full' },
   {path: 'propriedades', component: PropriedadeComponent},
   { path: 'tarefa/:propriedades', component: TarefaComponent },
+  {path:'cadastro',component:CadastroComponent}
 ];
 
 @NgModule({
