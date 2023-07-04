@@ -111,23 +111,24 @@ export class TarefaComponent implements OnInit {
     }
     salvarCat(categoria: String){
       localStorage.setItem("dropC",JSON.stringify(categoria))
-    }
-     atualizarDrop(tarefa:Tarefa){
-       if (!this.hasPermission('MoveCard')) {
-         alert('Não pode mover'); 
-         return;
-       }
-       alert('Pode mover');
+    
+    //  atualizarDrop(tarefa:Tarefa){
+    //    if (!this.hasPermission('MoveCard')) {
+    //      alert('Não pode mover'); 
+    //      return;
+    //    }
+      //  alert('Pode mover');
        const categoriaDestino = JSON.parse(localStorage.getItem('dropC'));
-       const targetIndex = this.listas.findIndex(item => item === tarefa);
+       const targetIndex = this.listas.findIndex(item => item === this.tarefa);
        console.log(targetIndex);
     
        if (targetIndex !== -1) {
-         tarefa.categoria = categoriaDestino; 
+         this.tarefa.categoria = categoriaDestino; 
          this.listas.splice(targetIndex, 1); 
-         this.listas.splice(this.posicaoTroca,0,tarefa); 
+         this.listas.splice(this.posicaoTroca,0,this.tarefa); 
          this.salvar(); 
      }
+    
      }
      pegarPosicao(tarefa:Tarefa){
        this.posicaoTroca=this.listas.indexOf(tarefa);
@@ -141,33 +142,33 @@ export class TarefaComponent implements OnInit {
   
     
 
-   adicionarTarefa(): void {
-     if (!this.hasPermission('Add')) {
-       alert('Não pode cadastrar');
-       return;
-     }
-     alert('Pode cadastrar');
-   }
+  //  adicionarTarefa(): void {
+  //    if (!this.hasPermission('Add')) {
+  //      alert('Não pode cadastrar');
+  //      return;
+  //    }
+  //    alert('Pode cadastrar');
+  //  }
 
-   editarTarefa(): void {
-     if (!this.hasPermission('Edit')) {
-       alert('Não pode editar');
-       return;
-     }
-     alert('Pode editar');
-   }
+  //  editarTarefa(): void {
+  //    if (!this.hasPermission('Edit')) {
+  //      alert('Não pode editar');
+  //      return;
+  //    }
+  //    alert('Pode editar');
+  //  }
 
-   removerTarefa(): void {
-     if (!this.hasPermission('Remove')) {
-       alert('Não pode remover');
-       return;
-     }
-     alert('Pode remover');
-   }
+  //  removerTarefa(): void {
+  //    if (!this.hasPermission('Remove')) {
+  //      alert('Não pode remover');
+  //      return;
+  //    }
+  //    alert('Pode remover');
+  //  }
 
-   hasPermission(permission: string): boolean {
-    return this.user.cardPermissions === permission;
-  }
+  //  hasPermission(permission: string): boolean {
+  //   return this.user.cardPermissions === permission;
+  // }
  
    private getUsuarioLogado(): User {
      return this.users.find((user) => {

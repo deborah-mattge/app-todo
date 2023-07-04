@@ -1,0 +1,13 @@
+<p>
+Não possui conta?
+ <a href="http://localhost:4200/cadastro"><button class="botoes" >Cadastro</button></a>
+</p>
+
+<div>
+  <h4>Usuario</h4>
+      <input type="email" placeholder="Ex: maria_silva"  class="cadastroInput" [(ngModel)]="id">
+  
+      <h4>Senha</h4>
+      <input type="password" placeholder="Senha"  class="cadastroInput" [(ngModel)]="password">
+      <button (click)="login()">Login</button>
+</div>
