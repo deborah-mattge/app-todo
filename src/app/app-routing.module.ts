@@ -7,13 +7,13 @@ import { AuthGuardService } from 'src/services/auth-guard.service';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 const routes: Routes = [
-  { path: 'tarefas', component: TarefaComponent },
+  { path: 'tarefas', component: TarefaComponent, canActivate:[AuthGuardService]},
+  {path:"login",component:LoginComponent},
   { path: 'categorias', component: CategoriaComponent, canActivate:[AuthGuardService]},
-  { path: '', redirectTo: 'tarefas', pathMatch: 'full' },
-  {path: 'propriedades', component: PropriedadeComponent},
+  {path: 'propriedades', component: PropriedadeComponent, canActivate:[AuthGuardService]},
   { path: 'tarefa/:propriedades', component: TarefaComponent },
   {path:'cadastro',component:CadastroComponent},
-  {path: 'login', component:LoginComponent}
+  {path:'',redirectTo:"login",pathMatch:"full"}
 ];
 
 @NgModule({

@@ -39,17 +39,18 @@ export class CadastroComponent implements OnInit {
       name:this.name,
       password: this.password,
       email: this.email,
-      cardPermissions:'Edit',
-      propertiesPermissions: 'Edit'
+      cardPermissions:'Remove',
+      propertiesPermissions: 'Remove'
     };
 
     this.userRepository.addUser(novoUsuario).subscribe(
       (response) => {
-        console.log('Usuário adicionado com sucesso:', response);
+        alert('Usuário adicionado com sucesso:');
         // Faça algo após adicionar o usuário
       },
       (error) => {
         console.error('Erro ao adicionar usuário:', error);
+        alert('erro')
         // Trate o erro adequadamente
       }
     );

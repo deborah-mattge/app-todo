@@ -100,6 +100,20 @@ remover(indice:number){
      return user.id === this.userId
    }) as User;
  }
+ getCookie(name: string): string | null {
+  const cookieString = decodeURIComponent(document.cookie);
+  const cookies = cookieString.split(';');
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+
+    if (cookie.startsWith(name + '=')) {
+      const valueString = cookie.substring(name.length + 1);
+      return valueString;
+    }
+  }
+ 
+}
 }
 
 

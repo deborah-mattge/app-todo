@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
   login(){
    const usuarioLogado=this.findUser();
+   alert('login efetuado com sucesso')
 
    this.setCookie(usuarioLogado);
    const usuarioLogadoString = this.getCookie('usuarioLogado');

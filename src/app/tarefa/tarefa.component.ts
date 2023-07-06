@@ -18,7 +18,7 @@ interface Tarefa{
 })
 
 export class TarefaComponent implements OnInit {
-  private userId: string = 'diogo.defante';
+  private userId: string = this.cookies();
   private users: User[] = [];
   user!: User;
 
@@ -34,8 +34,20 @@ export class TarefaComponent implements OnInit {
     })
   
    }
+   cookies(){
+    const usuarioLogadoString=this.getCookie('usuarioLogado');
+    if (usuarioLogadoString) {
+      const usuarioLogado = JSON.parse(usuarioLogadoString);
+      this.user=usuarioLogado
+      return usuarioLogado.id;
+      
+   }
+  }
 
   ngOnInit() {
+    console.log(this.userId)
+    console.log(this.user)
+
     const tarefas = localStorage.getItem('tarefa');
     if (tarefas) {
       this.listas = JSON.parse(tarefas);
@@ -111,13 +123,14 @@ export class TarefaComponent implements OnInit {
     }
     salvarCat(categoria: String){
       localStorage.setItem("dropC",JSON.stringify(categoria))
+    }
     
-    //  atualizarDrop(tarefa:Tarefa){
-    //    if (!this.hasPermission('MoveCard')) {
-    //      alert('Não pode mover'); 
-    //      return;
-    //    }
-      //  alert('Pode mover');
+      atualizarDrop(tarefa:Tarefa){
+        if (!this.hasPermission('MoveCard')) {
+          alert('Não pode mover'); 
+          return;
+        }
+        alert('Pode mover');
        const categoriaDestino = JSON.parse(localStorage.getItem('dropC'));
        const targetIndex = this.listas.findIndex(item => item === this.tarefa);
        console.log(targetIndex);
@@ -142,37 +155,52 @@ export class TarefaComponent implements OnInit {
   
     
 
-  //  adicionarTarefa(): void {
-  //    if (!this.hasPermission('Add')) {
-  //      alert('Não pode cadastrar');
-  //      return;
-  //    }
-  //    alert('Pode cadastrar');
-  //  }
+    adicionarTarefa(): void {
+      if (!this.hasPermission('Add')) {
+        alert('Não pode cadastrar');
+        return;
+      }
+      alert('Pode cadastrar');
+    }
 
-  //  editarTarefa(): void {
-  //    if (!this.hasPermission('Edit')) {
-  //      alert('Não pode editar');
-  //      return;
-  //    }
-  //    alert('Pode editar');
-  //  }
+    editarTarefa(): void {
+      if (!this.hasPermission('Edit')) {
+        alert('Não pode editar');
+        return;
+      }
+      alert('Pode editar');
+    }
 
-  //  removerTarefa(): void {
-  //    if (!this.hasPermission('Remove')) {
-  //      alert('Não pode remover');
-  //      return;
-  //    }
-  //    alert('Pode remover');
-  //  }
+    removerTarefa(): void {
+      if (!this.hasPermission('Remove')) {
+        alert('Não pode remover');
+        return;
+      }
+      alert('Pode remover');
+    }
 
-  //  hasPermission(permission: string): boolean {
-  //   return this.user.cardPermissions === permission;
-  // }
- 
-   private getUsuarioLogado(): User {
-     return this.users.find((user) => {
-       return user.id === this.userId
-     }) as User;
+    hasPermission(permission: string): boolean {
+      
+     return this.user.cardPermissions === permission;
    }
+ 
+  //  private getUsuarioLogado(): User {
+  //    return this.users.find((user) => {
+  //      return user.id === this.userId
+  //    }) as User;
+  //  }
+   getCookie(name: string): string | null {
+    const cookieString = decodeURIComponent(document.cookie);
+    const cookies = cookieString.split(';');
+  
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+  
+      if (cookie.startsWith(name + '=')) {
+        const valueString = cookie.substring(name.length + 1);
+        return valueString;
+      }
+    }
+   
  }
+}

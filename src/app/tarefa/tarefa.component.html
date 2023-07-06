@@ -10,7 +10,7 @@
       
     </div>
     
-    <button (click)="adicionarTarefa()"[disabled]="!hasPermission('Add')"(click)="cadastrarTarefa()" class="botaoCadastrar">Adicionar tarefa</button>
+    <button (click)="adicionarTarefa()" (click)="cadastrarTarefa()" class="botaoCadastrar">Adicionar tarefa</button>
   </div>
   <div class="tudo">
     <div *ngFor="let categoria of categorias">
